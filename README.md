@@ -3,6 +3,6 @@
 
 ## TODO
 
-- [ ] Deploy
-- [ ] Scaffold
-- [ ] Database (PostgreSQL) 
+- [x] Deploy
+- [x] Scaffold
+- [x] Database (PostgreSQL) 
