@@ -15,8 +15,8 @@ function TopNav() {
       <div>Gallery</div>
       <div>Sign In</div>
       <div className="flex gap-4">
-        <a href="/">Home</a>
-        <a href="/">about</a>
+        <a href="">Home</a>
+        <a href="">about</a>
       </div>  
     </nav>
   );
