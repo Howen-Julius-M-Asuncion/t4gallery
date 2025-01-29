@@ -1,7 +1,6 @@
-
-
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { UploadButton } from "@uploadthing/react";
+import { auth } from "@clerk/nextjs/server";      
+import { eq } from "drizzle-orm";
 import { db } from "~/server/db";
 
 // export const dynamic = "force-dynamic";
@@ -18,7 +17,12 @@ import { db } from "~/server/db";
 // }));
 
 async function Images() {
+  const user = await auth();
+  // If you throw, the user will not be able to upload
+    if (!user.userId) throw new UploadThingError("Unauthorized");
+
   const images = await db.query.images.findMany({
+    where: (model) => eq(model.userId, user.userId),
     orderBy: (model, { desc }) => desc(model.id),
   });
   return (
